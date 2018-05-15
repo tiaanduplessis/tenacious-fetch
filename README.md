@@ -1,5 +1,7 @@
 
 # tenacious-fetch
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/tiaanduplessis/tenacious-fetch.svg)](https://greenkeeper.io/)
 [![package version](https://img.shields.io/npm/v/tenacious-fetch.svg?style=flat-square)](https://npmjs.org/package/tenacious-fetch)
 [![package downloads](https://img.shields.io/npm/dm/tenacious-fetch.svg?style=flat-square)](https://npmjs.org/package/tenacious-fetch)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
