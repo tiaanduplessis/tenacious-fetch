@@ -1,0 +1,53 @@
+{
+  "name": "tenacious-fetch",
+  "version": "1.0.0",
+  "description": "Tiny fetch API wrapper to add support for retries, retry delay & timeouts",
+  "main": "dist/tenacious-fetch.js",
+  "module": "dist/tenacious-fetch.m.js",
+  "source": "src/index.js",
+  "repository": "https://github.com/tiaanduplessis/tenacious-fetch",
+  "author": "Tiaan du Plessis",
+  "license": "MIT",
+  "scripts": {
+    "build": "microbundle",
+    "lint": "standard --fix ./**/*.js",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jest": "^22.4.3",
+    "kill-port": "^1.2.0",
+    "microbundle": "^0.4.4",
+    "node-fetch": "^2.1.2",
+    "standard": "^11.0.1"
+  },
+  "keywords": [
+    "fetch",
+    "fetch-wrapper",
+    "timeout",
+    "retries",
+    "retry",
+    "fetch-retry"
+  ],
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "dist"
+    ],
+    "env": {
+      "jest": true
+    }
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/setup.js"
+    ]
+  }
+}
