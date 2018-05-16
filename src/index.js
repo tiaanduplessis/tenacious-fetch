@@ -22,8 +22,8 @@ function tenaciousFetch (url = '', config = {}) {
     )
   }
 
-  if (typeof retryStatus === 'string') {
-    retryStatus = [retryStatus]
+  if (typeof retryStatus === 'string' || typeof retryStatus === 'number') {
+    retryStatus = [Number.parseInt(retryStatus)]
   }
 
   function retryingFetch (retries, url, config) {
