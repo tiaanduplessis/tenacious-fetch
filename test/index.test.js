@@ -8,10 +8,6 @@ test('should export function', () => {
   expect(tenaciousFetch).toBeDefined()
 })
 
-test('should throw if no fetcher provided', () => {
-//   expect(() => tenaciousFetch(`${baseURL}/name`)).toThrow()
-})
-
 test('should perform GET request', async () => {
   const res = await tenaciousFetch(`${baseURL}/name`, {
     fetcher: fetch
@@ -34,7 +30,7 @@ test('should perform POST request', async () => {
 test('should timeout for long request', () => {
   expect(tenaciousFetch(`${baseURL}/timeout`, {
     fetcher: fetch,
-    timeout: 500
+    timeout: 300
   })).rejects.toThrowError()
 })
 
@@ -43,6 +39,16 @@ test('should retry if request fails with 500', async () => {
     fetcher: fetch,
     retries: 3,
     retryDelay: 100,
+    retryStatus: [500]
+  })
+  expect(res.status).toBe(200)
+})
+
+test('should use incremental backoff is factor provided', async () => {
+  const res = await tenaciousFetch(`${baseURL}/retries`, {
+    fetcher: fetch,
+    retries: 3,
+    factor: 10,
     retryStatus: [500]
   })
   expect(res.status).toBe(200)

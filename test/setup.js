@@ -1,6 +1,7 @@
 import http from 'http'
 import express from 'express'
 import bodyParser from 'body-parser'
+import kill from 'kill-port'
 
 global.PORT = 4000
 
@@ -44,4 +45,5 @@ server.listen(global.PORT)
 
 global.stop = function () {
   server.close()
+  kill(global.PORT)
 }

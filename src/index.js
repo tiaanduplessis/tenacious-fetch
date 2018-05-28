@@ -1,4 +1,5 @@
-const ONE_SECOND = 1000
+import retryingFetch from './retrying-fetch'
+
 let browserFetch = false
 
 try {
@@ -8,62 +9,27 @@ try {
 function tenaciousFetch (url = '', config = {}) {
   config = Object.assign({
     retries: 1,
-    retryDelay: ONE_SECOND,
+    retryDelay: 1000,
     retryStatus: [],
     fetcher: browserFetch,
     timeout: undefined
   }, config)
 
-  let {retries, retryDelay, retryStatus, fetcher, timeout} = config
-
-  if (!fetcher || typeof fetcher !== 'function') {
+  if (!config.fetcher || typeof config.fetcher !== 'function') {
     throw new Error(
       'tenacious-fetch: No fetch implementation found. Provide a valid fetch implementation via the fetcher configuration property.'
     )
   }
 
-  if (typeof retryStatus === 'string' || typeof retryStatus === 'number') {
-    retryStatus = [Number.parseInt(retryStatus)]
+  if (typeof config.retryStatus === 'string' || typeof config.retryStatus === 'number') {
+    config.retryStatus = [Number.parseInt(config.retryStatus)]
   }
 
-  function retryingFetch (retries, url, config) {
-    let retriesLeft = retries
-
-    return new Promise((resolve, reject) => {
-      function fetchAttempt () {
-        fetcher(url, config)
-          .then(res => {
-            if (retryStatus.includes(res.status)) {
-              if (retriesLeft > 0) {
-                retry()
-              } else {
-                reject(res)
-              }
-            } else {
-              resolve(res)
-            }
-          })
-          .catch(error => {
-            if (retriesLeft > 0) {
-              retry()
-            } else {
-              reject(error)
-            }
-          })
-      }
-
-      function retry () {
-        retriesLeft--
-        setTimeout(fetchAttempt, retryDelay)
-      }
-
-      fetchAttempt(retries)
-    })
-  }
+  const timeout = config.timeout
 
   if (timeout && Number.isInteger(timeout)) {
     return Promise.race([
-      retryingFetch(retries, url, config),
+      retryingFetch(config.retries, url, config),
       new Promise((resolve, reject) =>
         setTimeout(
           () =>
@@ -78,7 +44,7 @@ function tenaciousFetch (url = '', config = {}) {
     ])
   }
 
-  return retryingFetch(retries, url, config)
+  return retryingFetch(config.retries, url, config)
 }
 
 export default tenaciousFetch
