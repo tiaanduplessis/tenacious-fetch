@@ -1,3 +1,6 @@
+<div align="center">
+    <img width="20%" src="./logo.png" alt="" />
+</div>
 
 # tenacious-fetch
 [![package version](https://img.shields.io/npm/v/tenacious-fetch.svg?style=flat-square)](https://npmjs.org/package/tenacious-fetch)
