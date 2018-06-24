@@ -1,6 +1,6 @@
 {
   "name": "tenacious-fetch",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tiny fetch API wrapper to add support for retries, retry delay & timeouts",
   "main": "dist/tenacious-fetch.js",
   "module": "dist/tenacious-fetch.m.js",
