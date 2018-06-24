@@ -35,11 +35,6 @@
     "retry",
     "fetch-retry"
   ],
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
   "standard": {
     "ignore": [
       "dist"
