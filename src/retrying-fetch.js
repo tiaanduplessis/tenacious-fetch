@@ -7,9 +7,16 @@ export default function retryingFetch (retries, url, config) {
       fetcher(url, config)
         .then(res => {
           if (retryStatus.includes(res.status)) {
+            // TODO: - Remove repetition
             if (retriesLeft > 0) {
               retriesLeft--
-              setTimeout(() => fetchAttempt(url, config, retriesLeft), getRetryDelay(config, retriesLeft))
+              const retryDelay = getRetryDelay(config, retriesLeft)
+
+              if (config.onRetry && typeof config.onRetry === 'function') {
+                config.onRetry({retriesLeft, retryDelay})
+              }
+
+              setTimeout(() => fetchAttempt(url, config, retriesLeft), retryDelay)
             } else {
               reject(res)
             }
@@ -19,8 +26,15 @@ export default function retryingFetch (retries, url, config) {
         })
         .catch(error => {
           if (retriesLeft > 0) {
+            // TODO: - Remove repetition
             retriesLeft--
-            setTimeout(() => fetchAttempt(url, config, retriesLeft), getRetryDelay(config, retriesLeft))
+            const retryDelay = getRetryDelay(config, retriesLeft)
+
+            if (config.onRetry && typeof config.onRetry === 'function') {
+              config.onRetry({retriesLeft, retryDelay})
+            }
+
+            setTimeout(() => fetchAttempt(url, config, retriesLeft), retryDelay)
           } else {
             reject(error)
           }
