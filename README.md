@@ -47,6 +47,7 @@ const additionalTenaciousFetchConfig = {
     fetcher: window.fetch,  // Fetch implementation to use, default is window.fetch
     retries: 3,             // Number of retries, default is 1
     retryDelay: 1000 * 3,   // Delay in ms before retrying, default is 1000ms
+    onRetry: ({retriesLeft, retryDelay}) => console.log(retriesLeft, retryDelay)
     retryStatus = [],       // Status codes of response that should trigger retry e.g. [500, 404] or just "500". 
                             // defaults to empty array
     timeout = 1000 * 15,    // Timeout in ms before throwing a timeout error for the request.
