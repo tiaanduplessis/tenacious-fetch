@@ -12,7 +12,8 @@
     "build": "microbundle",
     "lint": "standard --fix ./**/*.js",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "prepublish": "yarn run build"
   },
   "files": [
     "dist"
