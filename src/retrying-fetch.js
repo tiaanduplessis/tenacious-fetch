@@ -13,7 +13,7 @@ export default function retryingFetch (retries, url, config) {
               const retryDelay = getRetryDelay(config, retriesLeft)
 
               if (config.onRetry && typeof config.onRetry === 'function') {
-                config.onRetry({retriesLeft, retryDelay})
+                config.onRetry({retriesLeft, retryDelay, response: res})
               }
 
               setTimeout(() => fetchAttempt(url, config, retriesLeft), retryDelay)
@@ -31,7 +31,7 @@ export default function retryingFetch (retries, url, config) {
             const retryDelay = getRetryDelay(config, retriesLeft)
 
             if (config.onRetry && typeof config.onRetry === 'function') {
-              config.onRetry({retriesLeft, retryDelay})
+              config.onRetry({retriesLeft, retryDelay, error})
             }
 
             setTimeout(() => fetchAttempt(url, config, retriesLeft), retryDelay)

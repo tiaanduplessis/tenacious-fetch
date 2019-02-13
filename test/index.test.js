@@ -17,6 +17,7 @@ test('should perform GET request', async () => {
 
 test('should perform POST request', async () => {
   const res = await tenaciousFetch(`${baseURL}/name`, {
+
     fetcher: fetch,
     method: 'POST',
     headers: {
