@@ -1,17 +1,25 @@
+/* global AbortController */
+import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
+import {fetch} from 'whatwg-fetch'
 import retryingFetch from './retrying-fetch'
 
 let browserFetch = false
 
-try {
-  browserFetch = window && window.fetch
-} catch (error) {}
+if (window && window.fetch && ('signal' in new window.Request(''))) {
+  browserFetch = window.fetch
+} else {
+  browserFetch = fetch
+}
 
 function tenaciousFetch (url = '', config = {}) {
+  const controller = new AbortController()
+
   config = Object.assign({
     retries: 1,
     retryDelay: 1000,
     retryStatus: [],
     fetcher: browserFetch,
+    signal: controller.signal,
     timeout: undefined
   }, config)
 
@@ -32,12 +40,14 @@ function tenaciousFetch (url = '', config = {}) {
       retryingFetch(config.retries, url, config),
       new Promise((resolve, reject) =>
         setTimeout(
-          () =>
+          () => {
+            controller.abort()
             reject(
               new Error(
                 `tenacious-fetch: Request took longer than timeout of ${timeout} ms.`
               )
-            ),
+            )
+          },
           timeout
         )
       )

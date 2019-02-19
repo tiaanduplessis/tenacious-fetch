@@ -25,7 +25,6 @@
     "jest": "^22.4.3",
     "kill-port": "^1.2.0",
     "microbundle": "^0.4.4",
-    "node-fetch": "^2.1.2",
     "standard": "^11.0.1"
   },
   "keywords": [
@@ -48,5 +47,9 @@
     "setupFiles": [
       "./test/setup.js"
     ]
+  },
+  "dependencies": {
+    "abortcontroller-polyfill": "^1.2.4",
+    "whatwg-fetch": "^3.0.0"
   }
 }

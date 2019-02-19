@@ -1,6 +1,6 @@
 import tenaciousFetch from '../src/index'
 
-import fetch from 'node-fetch'
+import {fetch} from 'whatwg-fetch'
 
 const baseURL = `http://localhost:${global.PORT}`
 
