@@ -28,13 +28,6 @@ test('should perform POST request', async () => {
   expect(res.status).toBe(200)
 })
 
-test('should timeout for long request', () => {
-  expect(tenaciousFetch(`${baseURL}/timeout`, {
-    fetcher: fetch,
-    timeout: 300
-  })).rejects.toThrowError()
-})
-
 test('should retry if request fails with 500', async () => {
   const fn = jest.fn()
   const res = await tenaciousFetch(`${baseURL}/retries`, {
@@ -56,6 +49,16 @@ test('should use incremental backoff is factor provided', async () => {
     retryStatus: [500]
   })
   expect(res.status).toBe(200)
+})
+
+test('should timeout for long request', () => {
+  let start = process.hrtime()
+  expect(tenaciousFetch(`${baseURL}/timeout`, {
+    fetcher: fetch,
+    timeout: 300
+  })).rejects.toThrowError()
+  let end = process.hrtime(start)
+  expect(end[0] < 1000)
 })
 
 afterAll(() => {
