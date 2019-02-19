@@ -23,10 +23,11 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.3",
-    "jest": "^22.4.3",
-    "kill-port": "^1.2.0",
+    "jest": "~23.0.0",
     "microbundle": "^0.4.4",
-    "standard": "^11.0.1"
+    "portfinder": "^1.0.20",
+    "standard": "^11.0.1",
+    "stoppable": "^1.1.0"
   },
   "keywords": [
     "fetch",
