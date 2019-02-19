@@ -1,4 +1,5 @@
 import http from 'http'
+import cors from 'cors'
 import express from 'express'
 import bodyParser from 'body-parser'
 import kill from 'kill-port'
@@ -9,6 +10,7 @@ const app = express()
 
 let attemptLeft = 3
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/name', (req, res) => {
