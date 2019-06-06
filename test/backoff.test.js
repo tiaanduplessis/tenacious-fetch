@@ -10,3 +10,7 @@ test('should increment exponentially', () => {
   expect(exponential(10, 1)).toBe(10)
   expect(exponential(10, 2)).toBe(100)
 })
+
+afterAll(() => {
+  global.stop()
+})

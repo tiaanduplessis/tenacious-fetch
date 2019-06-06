@@ -1,14 +1,15 @@
 import http from 'http'
+import cors from 'cors'
 import express from 'express'
 import bodyParser from 'body-parser'
-import kill from 'kill-port'
-
-global.PORT = 4000
+import portfinder from 'portfinder'
+import stoppable from 'stoppable'
 
 const app = express()
 
 let attemptLeft = 3
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/name', (req, res) => {
@@ -39,11 +40,12 @@ app.get('/retries', (req, res) => {
   }
 })
 
-const server = http.createServer(app)
-
-server.listen(global.PORT)
+const server = stoppable(http.createServer(app))
+portfinder.getPort(function (err, port) {
+  global.PORT = port
+  server.listen(global.PORT)
+})
 
 global.stop = function () {
   server.close()
-  kill(global.PORT)
 }
