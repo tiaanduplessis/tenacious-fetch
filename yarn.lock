@@ -706,9 +706,10 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-env@^1.7.0:
+babel-preset-env@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.7.0.tgz#dea79fa4ebeb883cd35dab07e260c1c9c04df77a"
+  integrity sha512-9OR2afuKDneX2/q2EurSftUYM0xGu4O2D9adAhVfADDhrYDaxXV0rBbevVYoY9n6nyX1PmQW/0jtpJvUNr9CHg==
   dependencies:
     babel-plugin-check-es2015-constants "^6.22.0"
     babel-plugin-syntax-trailing-function-commas "^6.22.0"
@@ -854,9 +855,10 @@ body-parser@1.18.2:
     raw-body "2.3.2"
     type-is "~1.6.15"
 
-body-parser@^1.18.3:
+body-parser@1.18.3:
   version "1.18.3"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
+  integrity sha1-WykhmP/dVTs6DyDe0FkrlWlVyLQ=
   dependencies:
     bytes "3.0.0"
     content-type "~1.0.4"
@@ -1267,7 +1269,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-cors@^2.8.5:
+cors@2.8.5:
   version "2.8.5"
   resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
   integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
@@ -1860,9 +1862,10 @@ expect@^23.6.0:
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
 
-express@^4.16.3:
+express@4.16.3:
   version "4.16.3"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
+  integrity sha1-avilAjUNsyRuzEvs9rWjTSL37VM=
   dependencies:
     accepts "~1.3.5"
     array-flatten "1.1.1"
@@ -3161,7 +3164,7 @@ jest-worker@^23.2.0:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@~23.0.0:
+jest@23.0.1:
   version "23.0.1"
   resolved "https://registry.yarnpkg.com/jest/-/jest-23.0.1.tgz#0d083290ee4112cecfb780df6ff81332ed373201"
   integrity sha1-DQgykO5BEs7Pt4Dfb/gTMu03MgE=
@@ -3491,9 +3494,10 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-microbundle@^0.4.4:
+microbundle@0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/microbundle/-/microbundle-0.4.4.tgz#7a9e3d6b05e237ea66a8ec9ac736006f21a23101"
+  integrity sha512-pjOigeyzxelTbI3eY6vBWMwo+gZlluqEmLAbiTJFgZ0/IOLDJQC9fFSvHztkO0MdQ5ufaJTekBO2AnAq/XUtGA==
   dependencies:
     acorn-jsx "^4.1.1"
     asyncro "^3.0.0"
@@ -4063,7 +4067,7 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
-portfinder@^1.0.20:
+portfinder@1.0.20:
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.20.tgz#bea68632e54b2e13ab7b0c4775e9b41bf270e44a"
   integrity sha512-Yxe4mTyDzTd59PZJY4ojZR8F+E5e97iq2ZOHPz3HDgSvYC5siNad2tLooQ5y5QHyQhc3xVqvyk/eNA3wuoa7Sw==
@@ -5204,9 +5208,10 @@ standard-engine@~8.0.0:
     minimist "^1.1.0"
     pkg-conf "^2.0.0"
 
-standard@^11.0.1:
+standard@11.0.1:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/standard/-/standard-11.0.1.tgz#49be40c76f1d564964b22bbf7309929ad0335e29"
+  integrity sha512-nu0jAcHiSc8H+gJCXeiziMVZNDYi8MuqrYJKxTgjP4xKXZMKm311boqQIzDrYI/ktosltxt2CbDjYQs9ANC8IA==
   dependencies:
     eslint "~4.18.0"
     eslint-config-standard "11.0.0"
@@ -5237,7 +5242,7 @@ stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
 
-stoppable@^1.1.0:
+stoppable@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.1.0.tgz#32da568e83ea488b08e4d7ea2c3bcc9d75015d5b"
   integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
