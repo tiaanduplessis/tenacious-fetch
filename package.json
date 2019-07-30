@@ -22,7 +22,7 @@
     "babel-preset-env": "1.7.0",
     "body-parser": "1.18.3",
     "cors": "2.8.5",
-    "express": "4.16.3",
+    "express": "4.17.1",
     "jest": "23.0.1",
     "microbundle": "0.4.4",
     "portfinder": "1.0.20",
