@@ -23,7 +23,7 @@
     "body-parser": "1.18.3",
     "cors": "2.8.5",
     "express": "4.16.3",
-    "jest": "23.0.1",
+    "jest": "24.8.0",
     "microbundle": "0.4.4",
     "portfinder": "1.0.20",
     "standard": "11.0.1",
