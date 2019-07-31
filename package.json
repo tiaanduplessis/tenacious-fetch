@@ -26,7 +26,7 @@
     "jest": "23.0.1",
     "microbundle": "0.4.4",
     "portfinder": "1.0.20",
-    "standard": "11.0.1",
+    "standard": "13.1.0",
     "stoppable": "1.1.0"
   },
   "keywords": [
