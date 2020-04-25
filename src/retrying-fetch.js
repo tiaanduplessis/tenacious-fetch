@@ -28,7 +28,11 @@ export default function retryingFetch (retries, url, config) {
           }
         })
         .catch(error => {
-          retryAttempt(retriesLeft, url, config, error)
+          if (config.retryOnFatalError) {
+            retryAttempt(retriesLeft, url, config, error)
+          } else {
+            reject(error)
+          }
         })
     }
 

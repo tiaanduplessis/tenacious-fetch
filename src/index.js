@@ -18,6 +18,7 @@ function tenaciousFetch (url = '', config = {}) {
     retries: 1,
     retryDelay: 1000,
     retryStatus: [],
+    retryOnFatalError: true,
     fetcher: browserFetch,
     signal: controller.signal,
     timeout: undefined
