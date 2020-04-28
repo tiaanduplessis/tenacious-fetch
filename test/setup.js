@@ -42,6 +42,10 @@ app.get('/retries', (req, res) => {
 
 const server = stoppable(http.createServer(app))
 portfinder.getPort(function (err, port) {
+  if (err) {
+    console.error(err)
+    return
+  }
   global.PORT = port
   server.listen(global.PORT)
 })
