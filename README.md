@@ -46,16 +46,18 @@ const normalFetchConfig = {
 
 
 const additionalTenaciousFetchConfig = {
-    fetcher: window.fetch,  // Fetch implementation to use, default is window.fetch
-    retries: 3,             // Number of retries, default is 1
-    retryDelay: 1000 * 3,   // Delay in ms before retrying, default is 1000ms
+    fetcher: window.fetch,      // Fetch implementation to use, default is window.fetch
+    retries: 3,                 // Number of retries, default is 1
+    retryDelay: 1000 * 3,       // Delay in ms before retrying, default is 1000ms
     onRetry: ({retriesLeft, retryDelay, response}) => console.log(retriesLeft, retryDelay, response),
-    retryStatus = [],       // Status codes of response that should trigger retry e.g. [500, 404] or just "500". 
-                            // defaults to empty array
-    timeout = 1000 * 15,    // Timeout in ms before throwing a timeout error for the request.
-                            // Defaults to no timeout (undefined).
-    factor: .5              // If factor is given, exponential backoff will be performed for retries, otherwise
-                            // linear backoff is used  
+    retryStatus = [],           // Status codes of response that should trigger retry e.g. [500, 404] or just "500". 
+                                // defaults to empty array
+    retryOnFatalError = true    // If there a fatal request (no response status), we can choose
+                                // to retry or not
+    timeout = 1000 * 15,        // Timeout in ms before throwing a timeout error for the request.
+                                // Defaults to no timeout (undefined).
+    factor: .5                  // If factor is given, exponential backoff will be performed for retries, otherwise
+                                // linear backoff is used  
 }
 
 const config = Object.assign({}, normalFetchConfig, additionalTenaciousFetchConfig)
