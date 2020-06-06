@@ -51,7 +51,7 @@
     ]
   },
   "dependencies": {
-    "abortcontroller-polyfill": "^1.2.4",
+    "abortcontroller-polyfill": "^1.4.0",
     "whatwg-fetch": "^3.0.0"
   }
 }
