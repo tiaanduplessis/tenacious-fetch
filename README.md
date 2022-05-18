@@ -44,7 +44,6 @@ const normalFetchConfig = {
     // Others...
 }
 
-
 const additionalTenaciousFetchConfig = {
     fetcher: window.fetch,      // Fetch implementation to use, default is window.fetch
     retries: 3,                 // Number of retries, default is 1

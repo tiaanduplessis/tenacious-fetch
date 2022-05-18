@@ -1,4 +1,4 @@
-import {linear, exponential} from './backoff'
+import { linear, exponential } from './backoff'
 
 export default function retryingFetch (retries, url, config) {
   return new Promise((resolve, reject) => {
@@ -8,7 +8,7 @@ export default function retryingFetch (retries, url, config) {
         const retryDelay = getRetryDelay(config, retriesLeft)
 
         if (config.onRetry && typeof config.onRetry === 'function') {
-          config.onRetry({retriesLeft, retryDelay, response: value})
+          config.onRetry({ retriesLeft, retryDelay, response: value })
         }
 
         setTimeout(() => fetchAttempt(url, config, retriesLeft), retryDelay)
@@ -18,7 +18,7 @@ export default function retryingFetch (retries, url, config) {
     }
 
     function fetchAttempt (url, config, retriesLeft) {
-      const {retryStatus, fetcher} = config
+      const { retryStatus, fetcher } = config
       fetcher(url, config)
         .then(res => {
           if (retryStatus.includes(res.status)) {
@@ -40,7 +40,7 @@ export default function retryingFetch (retries, url, config) {
   })
 }
 
-function getRetryDelay ({retryDelay, factor, retries}, retriesLeft) {
+function getRetryDelay ({ retryDelay, factor, retries }, retriesLeft) {
   if (factor && typeof factor === 'number' && Number.isInteger(factor)) {
     return exponential(factor, retries - retriesLeft)
   }

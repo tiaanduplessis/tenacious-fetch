@@ -1,6 +1,6 @@
 /* global AbortController */
 import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
-import {fetch} from 'whatwg-fetch'
+import { fetch } from 'whatwg-fetch'
 import retryingFetch from './retrying-fetch'
 
 let browserFetch = false

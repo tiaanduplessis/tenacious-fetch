@@ -1,7 +1,7 @@
-export function linear (initialVal, attempt) {
+export const linear = (initialVal, attempt) => {
   return initialVal * attempt
 }
 
-export function exponential (factor, attempt) {
+export const exponential = (factor, attempt) => {
   return Math.pow(factor, attempt)
 }
