@@ -42,13 +42,11 @@
     "ignore": [
       "dist"
     ],
-    "env": {
-      "jest": true
-    }
+    "env": ["jest"]
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFiles": [
+    "setupFilesAfterEnv": [
       "./test/setup.js"
     ]
   },

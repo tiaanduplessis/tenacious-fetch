@@ -37,10 +37,11 @@ function tenaciousFetch (url = '', config = {}) {
   const timeout = config.timeout
 
   if (timeout && Number.isInteger(timeout)) {
-    return Promise.race([
-      retryingFetch(config.retries, url, config),
-      new Promise((resolve, reject) =>
-        setTimeout(
+    let timeoutTimer
+    const request = Promise.race([
+      retryingFetch(config.retries, url, config, controller.signal),
+      new Promise((resolve, reject) => {
+        timeoutTimer = setTimeout(
           () => {
             controller.abort()
             reject(
@@ -51,8 +52,20 @@ function tenaciousFetch (url = '', config = {}) {
           },
           timeout
         )
-      )
+      })
     ])
+
+    function cleanup () {
+      clearTimeout(timeoutTimer)
+    }
+
+    return request.then(value => {
+      cleanup()
+      return value
+    }, error => {
+      cleanup()
+      throw error
+    })
   }
 
   return retryingFetch(config.retries, url, config)

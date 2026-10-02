@@ -1,4 +1,4 @@
-import {linear, exponential} from '../src/backoff'
+import { linear, exponential } from '../src/backoff'
 
 test('should increase linearly', () => {
   expect(linear(100, 1)).toBe(100)
@@ -9,8 +9,4 @@ test('should increase linearly', () => {
 test('should increment exponentially', () => {
   expect(exponential(10, 1)).toBe(10)
   expect(exponential(10, 2)).toBe(100)
-})
-
-afterAll(() => {
-  global.stop()
 })
