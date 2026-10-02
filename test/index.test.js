@@ -1,8 +1,12 @@
 import tenaciousFetch from '../src/index'
 
-import {fetch} from 'whatwg-fetch'
+import { fetch } from 'whatwg-fetch'
 
-const baseURL = `http://localhost:${global.PORT}`
+let baseURL
+
+beforeAll(() => {
+  baseURL = `http://127.0.0.1:${global.PORT}`
+})
 
 test('should export function', () => {
   expect(tenaciousFetch).toBeDefined()
@@ -23,7 +27,7 @@ test('should perform POST request', async () => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({success: true})
+    body: JSON.stringify({ success: true })
   })
   expect(res.status).toBe(200)
 })
@@ -51,16 +55,9 @@ test('should use incremental backoff is factor provided', async () => {
   expect(res.status).toBe(200)
 })
 
-test('should timeout for long request', () => {
-  let start = process.hrtime()
-  expect(tenaciousFetch(`${baseURL}/timeout`, {
+test('should timeout for long request', async () => {
+  await expect(tenaciousFetch(`${baseURL}/timeout`, {
     fetcher: fetch,
     timeout: 300
-  })).rejects.toThrowError()
-  let end = process.hrtime(start)
-  expect(end[0] < 1000)
-})
-
-afterAll(() => {
-  global.stop()
+  })).rejects.toThrow('Request took longer than timeout of 300 ms.')
 })
